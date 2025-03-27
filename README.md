@@ -1,6 +1,6 @@
-# Wellness Store React Frontend
+# Wellness Store Full Stack Application
 
-This is a React-based frontend for the Health and Wellness Products web application. It provides a modern single-page application experience for users to browse and purchase health and wellness products.
+This is a full-stack web application for a health and wellness products store. It features a modern React frontend with a Node.js/Express/MongoDB backend.
 
 ## Features
 
@@ -10,34 +10,50 @@ This is a React-based frontend for the Health and Wellness Products web applicat
 - Shopping cart functionality
 - Checkout process
 - Order history
-- Detailed product pages with information and reviews
+- Detailed product pages with information
 
-## Technologies Used
+## Technology Stack
 
+### Frontend
 - **React 18** - Frontend library for building the user interface
 - **React Router v6** - Handling navigation and routing
 - **Axios** - Making API requests to the backend
 - **Font Awesome** - Icons for improved UI
 - **CSS Modules** - Component-level styling
 
+### Backend
+- **Node.js** - JavaScript runtime
+- **Express** - Web framework
+- **MongoDB** - NoSQL database
+- **Mongoose** - MongoDB object modeling
+- **JWT** - JSON Web Tokens for authentication
+- **bcryptjs** - Password hashing
+
 ## Project Structure
 
-- `/src/components` - Reusable UI components
-  - `/layout` - Layout components like Header and Footer
-  - `/products` - Product-related components like ProductCard and ProductList
-  - `/common` - Common UI components
-- `/src/pages` - Page components for different routes
-- `/src/context` - React Context providers for authentication and cart
-- `/src/services` - API service functions
-- `/src/utils` - Utility functions
-- `/src/assets` - Static assets like images
+```
+wellness-store-react/
+├── backend/
+│   ├── controllers/    # Request handlers
+│   ├── middleware/     # Express middleware
+│   ├── models/         # Mongoose models
+│   └── routes/         # API routes
+├── public/             # Public assets
+├── src/                # React frontend code
+│   ├── components/     # Reusable UI components
+│   ├── context/        # React Context providers
+│   ├── pages/          # Page components
+│   ├── services/       # API service functions
+│   └── utils/          # Utility functions
+└── server.js           # Express server entry point
+```
 
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js and npm installed
-- Backend API running (from the original wellness-store-project)
+- MongoDB installed and running
 
 ### Installation
 
@@ -52,39 +68,85 @@ This is a React-based frontend for the Health and Wellness Products web applicat
    npm install
    ```
 
-3. Start the development server:
-   ```bash
-   npm start
+3. Set up environment variables (optional):
+   Create a `.env` file in the root directory with:
+   ```
+   MONGODB_URI=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret
+   PORT=5000
+   NODE_ENV=development
    ```
 
-4. The application should now be running at http://localhost:3000
+### Running the Application
 
-## API Integration
+#### Development Mode (with concurrent frontend and backend)
+```bash
+npm run dev
+```
 
-This frontend is designed to work with the corresponding backend API from the original wellness-store-project. The API endpoints are defined in `src/services/api.js` and include:
+This will start:
+- Backend server on port 5000
+- React development server on port 3000
 
-- User authentication (login/register)
-- Product listing and filtering
-- Cart management
-- Order processing
+#### Running Only the Backend
+```bash
+npm run server
+```
+
+#### Running Only the Frontend
+```bash
+npm run client
+```
+
+#### Production Mode
+```bash
+npm run build   # Build the React frontend
+npm start       # Start the production server
+```
+
+## API Endpoints
+
+### Products
+- `GET /api/products` - Get all products
+- `GET /api/products/category/:category` - Get products by category
+- `GET /api/products/:id` - Get a single product by ID
+- `POST /api/products` - Create a new product (admin only)
+- `PUT /api/products/:id` - Update a product (admin only)
+- `DELETE /api/products/:id` - Delete a product (admin only)
+
+### Users
+- `POST /api/users/register` - Register a new user
+- `POST /api/users/login` - Login user
+- `GET /api/users/profile` - Get user profile (protected)
+- `PUT /api/users/profile` - Update user profile (protected)
+
+### Cart
+- `GET /api/carts` - Get user cart (protected)
+- `POST /api/carts` - Add item to cart (protected)
+- `PUT /api/carts/:productId` - Update cart item quantity (protected)
+- `DELETE /api/carts/:productId` - Remove item from cart (protected)
+- `DELETE /api/carts` - Clear cart (protected)
+
+### Orders
+- `POST /api/orders` - Create a new order (protected)
+- `GET /api/orders` - Get user orders (protected)
+- `GET /api/orders/:id` - Get an order by ID (protected)
+- `PUT /api/orders/:id/pay` - Update order to paid (protected)
+- `GET /api/orders/admin` - Get all orders (admin only)
+- `PUT /api/orders/:id/status` - Update order status (admin only)
 
 ## Deployment
 
-To create a production build:
-
-```bash
-npm run build
-```
-
-This will create an optimized production build in the `build` folder that can be deployed to a static hosting service.
+The application is ready for deployment to platforms like Heroku, Vercel, or any other hosting service that supports Node.js applications.
 
 ## Future Enhancements
 
 - Add admin dashboard for product management
 - Implement product reviews and ratings
-- Add payment gateway integration
+- Add payment gateway integration (e.g., Stripe, PayPal)
 - Implement user profiles with saved addresses
 - Add wishlist functionality
+- Add product comparison feature
 
 ## Contributing
 
