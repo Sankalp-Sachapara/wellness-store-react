@@ -84,6 +84,26 @@ export const userService = {
     } catch (error) {
       throw error;
     }
+  },
+  
+  // Get user profile
+  getProfile: async () => {
+    try {
+      const response = await api.get('/users/profile');
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  
+  // Update user profile
+  updateProfile: async (userData) => {
+    try {
+      const response = await api.put('/users/profile', userData);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
   }
 };
 
@@ -166,6 +186,16 @@ export const orderService = {
   createOrder: async (orderData) => {
     try {
       const response = await api.post('/orders', orderData);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  
+  // Update order to paid
+  updateOrderToPaid: async (orderId, paymentResult) => {
+    try {
+      const response = await api.put(`/orders/${orderId}/pay`, paymentResult);
       return response.data;
     } catch (error) {
       throw error;
