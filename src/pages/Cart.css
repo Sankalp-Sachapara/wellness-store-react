@@ -1,0 +1,274 @@
+.cart-page {
+  padding: 2rem 0;
+}
+
+.cart-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Cart Items */
+.cart-items {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.cart-item {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-item-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #f8f9fa;
+}
+
+.cart-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cart-item-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cart-item-info {
+  margin-bottom: 1rem;
+}
+
+.cart-item-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.cart-item-title a {
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.cart-item-title a:hover {
+  color: #4CAF50;
+}
+
+.cart-item-price {
+  font-weight: 600;
+  color: #4CAF50;
+}
+
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.quantity-controls button {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.quantity-controls button:hover {
+  background-color: #e0e0e0;
+}
+
+.quantity-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quantity-controls span {
+  width: 40px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.remove-item-btn {
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.remove-item-btn:hover {
+  color: #d9534f;
+}
+
+.cart-item-subtotal {
+  margin-top: 0.5rem;
+  font-weight: 500;
+  text-align: right;
+}
+
+.cart-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+/* Cart Summary */
+.cart-summary {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  position: sticky;
+  top: 100px;
+  height: max-content;
+}
+
+.cart-summary h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.summary-items {
+  margin-bottom: 1.5rem;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.summary-item.total {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #4CAF50;
+}
+
+.summary-divider {
+  height: 1px;
+  background-color: #eee;
+  margin: 1rem 0;
+}
+
+.free-shipping {
+  color: #4CAF50;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.shipping-note {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.checkout-btn {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1.1rem;
+}
+
+/* Empty Cart */
+.empty-cart {
+  padding: 4rem 0;
+}
+
+.empty-cart-content {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.empty-cart-icon {
+  font-size: 4rem;
+  color: #ddd;
+  margin-bottom: 1.5rem;
+}
+
+.empty-cart h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.empty-cart p {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+/* Loading & Error States */
+.cart-loading,
+.cart-error {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.1rem;
+}
+
+.cart-error {
+  color: #d9534f;
+}
+
+.cart-error .btn {
+  margin-top: 1rem;
+}
+
+/* Media Queries */
+@media screen and (max-width: 992px) {
+  .cart-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .cart-summary {
+    position: static;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .cart-item {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .cart-item-image {
+    width: 100%;
+    height: 200px;
+  }
+  
+  .cart-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .cart-actions .btn {
+    width: 100%;
+  }
+}
